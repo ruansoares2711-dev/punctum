@@ -24,9 +24,9 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pixela — Banco de fotos digitais" },
+      { title: "Nexo — Banco de fotos digitais" },
       { name: "description", content: "Compre e baixe fotos digitais de alta qualidade. Curadoria, preço justo, licença simples." },
-      { property: "og:title", content: "Pixela — Banco de fotos digitais" },
+      { property: "og:title", content: "Nexo — Banco de fotos digitais" },
       { property: "og:description", content: "Compre e baixe fotos digitais de alta qualidade." },
       { property: "og:type", content: "website" },
     ],

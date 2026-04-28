@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { Camera } from "lucide-react";
 
 export const Route = createFileRoute("/login")({
-  head: () => ({ meta: [{ title: "Entrar — Pixela" }] }),
+  head: () => ({ meta: [{ title: "Entrar — Nexo" }] }),
   component: Login,
 });
 

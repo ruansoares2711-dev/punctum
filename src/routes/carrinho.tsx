@@ -10,7 +10,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { createCheckout } from "@/server/payments.functions";
 
 export const Route = createFileRoute("/carrinho")({
-  head: () => ({ meta: [{ title: "Carrinho — Pixela" }] }),
+  head: () => ({ meta: [{ title: "Carrinho — Nexo" }] }),
   component: Cart,
 });
 

@@ -9,7 +9,7 @@ import heroImg from "@/assets/hero.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Pixela — Fotos digitais com curadoria" },
+      { title: "Nexo — Fotos digitais com curadoria" },
       { name: "description", content: "Banco de imagens com curadoria. Compre, baixe e use fotos de alta qualidade em segundos." },
     ],
   }),

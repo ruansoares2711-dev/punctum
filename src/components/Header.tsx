@@ -34,7 +34,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2 font-display text-xl font-semibold tracking-tight">
           <Camera className="h-5 w-5 text-primary" />
-          <span>Pixela</span>
+          <span>Nexo</span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
