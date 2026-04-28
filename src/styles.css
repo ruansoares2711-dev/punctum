@@ -4,6 +4,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Nexo — fonts */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap");
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -31,74 +34,94 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
+/* ===========================
+   Nexo — tema dark-first
+   Paleta: grafite + ciano elétrico (símbolo de "nexo"/conexão)
+   =========================== */
 :root {
-  --radius: 0.75rem;
+  --radius: 0.625rem;
 
-  --background: oklch(0.99 0.003 80);
-  --foreground: oklch(0.18 0.02 270);
+  /* Light surface, dark ink */
+  --background: oklch(0.98 0.005 230);
+  --foreground: oklch(0.16 0.02 240);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 270);
+  --card-foreground: oklch(0.16 0.02 240);
 
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 270);
+  --popover-foreground: oklch(0.16 0.02 240);
 
-  --primary: oklch(0.55 0.22 285);
-  --primary-foreground: oklch(0.99 0.003 80);
-  --primary-glow: oklch(0.68 0.19 295);
+  /* Ciano elétrico — o "nexo" */
+  --primary: oklch(0.62 0.16 215);
+  --primary-foreground: oklch(0.99 0.005 230);
+  --primary-glow: oklch(0.78 0.14 200);
 
-  --secondary: oklch(0.96 0.01 270);
-  --secondary-foreground: oklch(0.22 0.03 270);
+  --secondary: oklch(0.96 0.008 240);
+  --secondary-foreground: oklch(0.2 0.03 240);
 
-  --muted: oklch(0.96 0.008 270);
-  --muted-foreground: oklch(0.5 0.02 270);
+  --muted: oklch(0.96 0.006 240);
+  --muted-foreground: oklch(0.5 0.02 240);
 
-  --accent: oklch(0.93 0.06 80);
-  --accent-foreground: oklch(0.25 0.05 50);
+  --accent: oklch(0.92 0.05 200);
+  --accent-foreground: oklch(0.22 0.05 230);
 
   --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.99 0.003 80);
+  --destructive-foreground: oklch(0.99 0.005 230);
 
-  --success: oklch(0.65 0.17 155);
-  --success-foreground: oklch(0.99 0.003 80);
+  --success: oklch(0.68 0.15 165);
+  --success-foreground: oklch(0.12 0.02 240);
 
-  --border: oklch(0.92 0.01 270);
-  --input: oklch(0.92 0.01 270);
-  --ring: oklch(0.55 0.22 285);
+  --border: oklch(0.91 0.01 240);
+  --input: oklch(0.91 0.01 240);
+  --ring: oklch(0.62 0.16 215);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.55 0.22 285) 0%, oklch(0.68 0.19 295) 50%, oklch(0.78 0.14 60) 100%);
-  --gradient-subtle: linear-gradient(180deg, oklch(0.99 0.003 80) 0%, oklch(0.96 0.008 270) 100%);
-  --shadow-elegant: 0 10px 40px -10px color-mix(in oklab, oklch(0.55 0.22 285) 25%, transparent);
-  --shadow-card: 0 1px 3px oklch(0 0 0 / 0.04), 0 8px 24px -8px oklch(0 0 0 / 0.08);
+  --gradient-hero: linear-gradient(135deg, oklch(0.62 0.16 215) 0%, oklch(0.72 0.15 195) 50%, oklch(0.85 0.1 175) 100%);
+  --gradient-subtle: linear-gradient(180deg, oklch(0.99 0.005 230) 0%, oklch(0.95 0.01 230) 100%);
+  --shadow-elegant: 0 10px 40px -10px color-mix(in oklab, oklch(0.62 0.16 215) 35%, transparent);
+  --shadow-card: 0 1px 3px oklch(0 0 0 / 0.04), 0 8px 24px -8px oklch(0 0 0 / 0.1);
 }
 
 .dark {
-  --background: oklch(0.13 0.015 270);
-  --foreground: oklch(0.97 0.005 80);
-  --card: oklch(0.18 0.02 270);
-  --card-foreground: oklch(0.97 0.005 80);
-  --popover: oklch(0.18 0.02 270);
-  --popover-foreground: oklch(0.97 0.005 80);
-  --primary: oklch(0.7 0.2 290);
-  --primary-foreground: oklch(0.13 0.015 270);
-  --primary-glow: oklch(0.78 0.16 295);
-  --secondary: oklch(0.25 0.02 270);
-  --secondary-foreground: oklch(0.97 0.005 80);
-  --muted: oklch(0.25 0.02 270);
-  --muted-foreground: oklch(0.7 0.02 270);
-  --accent: oklch(0.3 0.04 60);
-  --accent-foreground: oklch(0.97 0.005 80);
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.97 0.005 80);
-  --success: oklch(0.65 0.17 155);
-  --success-foreground: oklch(0.13 0.015 270);
-  --border: oklch(1 0 0 / 0.1);
-  --input: oklch(1 0 0 / 0.15);
-  --ring: oklch(0.7 0.2 290);
+  /* Grafite profundo — tema padrão da Nexo */
+  --background: oklch(0.14 0.012 240);
+  --foreground: oklch(0.97 0.005 230);
+
+  --card: oklch(0.18 0.015 240);
+  --card-foreground: oklch(0.97 0.005 230);
+
+  --popover: oklch(0.18 0.015 240);
+  --popover-foreground: oklch(0.97 0.005 230);
+
+  --primary: oklch(0.78 0.14 200);
+  --primary-foreground: oklch(0.14 0.012 240);
+  --primary-glow: oklch(0.85 0.13 190);
+
+  --secondary: oklch(0.24 0.02 240);
+  --secondary-foreground: oklch(0.97 0.005 230);
+
+  --muted: oklch(0.22 0.015 240);
+  --muted-foreground: oklch(0.7 0.015 230);
+
+  --accent: oklch(0.3 0.06 210);
+  --accent-foreground: oklch(0.97 0.005 230);
+
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.97 0.005 230);
+
+  --success: oklch(0.7 0.15 165);
+  --success-foreground: oklch(0.14 0.012 240);
+
+  --border: oklch(1 0 0 / 0.08);
+  --input: oklch(1 0 0 / 0.12);
+  --ring: oklch(0.78 0.14 200);
+
+  --gradient-hero: linear-gradient(135deg, oklch(0.78 0.14 200) 0%, oklch(0.7 0.16 215) 45%, oklch(0.55 0.18 260) 100%);
+  --gradient-subtle: linear-gradient(180deg, oklch(0.14 0.012 240) 0%, oklch(0.18 0.015 240) 100%);
+  --shadow-elegant: 0 10px 50px -10px color-mix(in oklab, oklch(0.78 0.14 200) 40%, transparent);
 }
 
 @layer base {
@@ -135,5 +158,10 @@
   }
   .text-balance {
     text-wrap: balance;
+  }
+  /* Marca Nexo — ponto de conexão luminoso */
+  .nexo-dot {
+    background: radial-gradient(circle at 30% 30%, var(--primary-glow), var(--primary) 60%, transparent 70%);
+    box-shadow: 0 0 12px color-mix(in oklab, var(--primary) 60%, transparent);
   }
 }

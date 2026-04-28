@@ -9,7 +9,7 @@ import heroImg from "@/assets/hero.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Pixela — Fotos digitais com curadoria" },
+      { title: "Nexo — Fotos digitais com curadoria" },
       { name: "description", content: "Banco de imagens com curadoria. Compre, baixe e use fotos de alta qualidade em segundos." },
     ],
   }),
@@ -39,14 +39,15 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         </div>
         <div className="container relative mx-auto flex flex-col items-center px-4 py-24 text-center md:py-36">
-          <span className="mb-4 rounded-full border border-border/60 bg-background/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
-            Curadoria · Licença simples · Download imediato
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
+            <span className="nexo-dot inline-block h-1.5 w-1.5 rounded-full" aria-hidden />
+            O nexo entre criadores e marcas
           </span>
           <h1 className="text-balance font-display text-5xl font-semibold leading-[1.05] md:text-7xl">
-            Imagens que <span className="bg-gradient-hero bg-clip-text text-transparent">contam histórias</span>.
+            Conecte sua ideia à <span className="bg-gradient-hero bg-clip-text text-transparent">imagem certa</span>.
           </h1>
           <p className="mt-6 max-w-xl text-balance text-lg text-muted-foreground">
-            Banco de fotos digitais com curadoria humana. Compre uma vez, use para sempre.
+            Nexo é o banco de fotos digitais com curadoria humana. Compre uma vez, use para sempre.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button asChild size="lg">

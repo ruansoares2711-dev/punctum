@@ -24,9 +24,9 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pixela — Banco de fotos digitais" },
+      { title: "Nexo — Banco de fotos digitais" },
       { name: "description", content: "Compre e baixe fotos digitais de alta qualidade. Curadoria, preço justo, licença simples." },
-      { property: "og:title", content: "Pixela — Banco de fotos digitais" },
+      { property: "og:title", content: "Nexo — Banco de fotos digitais" },
       { property: "og:description", content: "Compre e baixe fotos digitais de alta qualidade." },
       { property: "og:type", content: "website" },
     ],
@@ -34,7 +34,7 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -44,7 +44,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className="dark">
       <head>
         <HeadContent />
       </head>
