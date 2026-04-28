@@ -9,12 +9,60 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ContaRouteImport } from './routes/conta'
+import { Route as CatalogoRouteImport } from './routes/catalogo'
+import { Route as CarrinhoRouteImport } from './routes/carrinho'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FotoIdRouteImport } from './routes/foto.$id'
+import { Route as CheckoutSucessoRouteImport } from './routes/checkout.sucesso'
+import { Route as CheckoutPendenteRouteImport } from './routes/checkout.pendente'
+import { Route as CheckoutErroRouteImport } from './routes/checkout.erro'
 import { Route as ApiPublicMpWebhookRouteImport } from './routes/api/public/mp-webhook'
 
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContaRoute = ContaRouteImport.update({
+  id: '/conta',
+  path: '/conta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CatalogoRoute = CatalogoRouteImport.update({
+  id: '/catalogo',
+  path: '/catalogo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarrinhoRoute = CarrinhoRouteImport.update({
+  id: '/carrinho',
+  path: '/carrinho',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FotoIdRoute = FotoIdRouteImport.update({
+  id: '/foto/$id',
+  path: '/foto/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutSucessoRoute = CheckoutSucessoRouteImport.update({
+  id: '/checkout/sucesso',
+  path: '/checkout/sucesso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutPendenteRoute = CheckoutPendenteRouteImport.update({
+  id: '/checkout/pendente',
+  path: '/checkout/pendente',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutErroRoute = CheckoutErroRouteImport.update({
+  id: '/checkout/erro',
+  path: '/checkout/erro',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicMpWebhookRoute = ApiPublicMpWebhookRouteImport.update({
@@ -25,37 +73,156 @@ const ApiPublicMpWebhookRoute = ApiPublicMpWebhookRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/carrinho': typeof CarrinhoRoute
+  '/catalogo': typeof CatalogoRoute
+  '/conta': typeof ContaRoute
+  '/login': typeof LoginRoute
+  '/checkout/erro': typeof CheckoutErroRoute
+  '/checkout/pendente': typeof CheckoutPendenteRoute
+  '/checkout/sucesso': typeof CheckoutSucessoRoute
+  '/foto/$id': typeof FotoIdRoute
   '/api/public/mp-webhook': typeof ApiPublicMpWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/carrinho': typeof CarrinhoRoute
+  '/catalogo': typeof CatalogoRoute
+  '/conta': typeof ContaRoute
+  '/login': typeof LoginRoute
+  '/checkout/erro': typeof CheckoutErroRoute
+  '/checkout/pendente': typeof CheckoutPendenteRoute
+  '/checkout/sucesso': typeof CheckoutSucessoRoute
+  '/foto/$id': typeof FotoIdRoute
   '/api/public/mp-webhook': typeof ApiPublicMpWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/carrinho': typeof CarrinhoRoute
+  '/catalogo': typeof CatalogoRoute
+  '/conta': typeof ContaRoute
+  '/login': typeof LoginRoute
+  '/checkout/erro': typeof CheckoutErroRoute
+  '/checkout/pendente': typeof CheckoutPendenteRoute
+  '/checkout/sucesso': typeof CheckoutSucessoRoute
+  '/foto/$id': typeof FotoIdRoute
   '/api/public/mp-webhook': typeof ApiPublicMpWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/mp-webhook'
+  fullPaths:
+    | '/'
+    | '/carrinho'
+    | '/catalogo'
+    | '/conta'
+    | '/login'
+    | '/checkout/erro'
+    | '/checkout/pendente'
+    | '/checkout/sucesso'
+    | '/foto/$id'
+    | '/api/public/mp-webhook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/mp-webhook'
-  id: '__root__' | '/' | '/api/public/mp-webhook'
+  to:
+    | '/'
+    | '/carrinho'
+    | '/catalogo'
+    | '/conta'
+    | '/login'
+    | '/checkout/erro'
+    | '/checkout/pendente'
+    | '/checkout/sucesso'
+    | '/foto/$id'
+    | '/api/public/mp-webhook'
+  id:
+    | '__root__'
+    | '/'
+    | '/carrinho'
+    | '/catalogo'
+    | '/conta'
+    | '/login'
+    | '/checkout/erro'
+    | '/checkout/pendente'
+    | '/checkout/sucesso'
+    | '/foto/$id'
+    | '/api/public/mp-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CarrinhoRoute: typeof CarrinhoRoute
+  CatalogoRoute: typeof CatalogoRoute
+  ContaRoute: typeof ContaRoute
+  LoginRoute: typeof LoginRoute
+  CheckoutErroRoute: typeof CheckoutErroRoute
+  CheckoutPendenteRoute: typeof CheckoutPendenteRoute
+  CheckoutSucessoRoute: typeof CheckoutSucessoRoute
+  FotoIdRoute: typeof FotoIdRoute
   ApiPublicMpWebhookRoute: typeof ApiPublicMpWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conta': {
+      id: '/conta'
+      path: '/conta'
+      fullPath: '/conta'
+      preLoaderRoute: typeof ContaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/catalogo': {
+      id: '/catalogo'
+      path: '/catalogo'
+      fullPath: '/catalogo'
+      preLoaderRoute: typeof CatalogoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carrinho': {
+      id: '/carrinho'
+      path: '/carrinho'
+      fullPath: '/carrinho'
+      preLoaderRoute: typeof CarrinhoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foto/$id': {
+      id: '/foto/$id'
+      path: '/foto/$id'
+      fullPath: '/foto/$id'
+      preLoaderRoute: typeof FotoIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout/sucesso': {
+      id: '/checkout/sucesso'
+      path: '/checkout/sucesso'
+      fullPath: '/checkout/sucesso'
+      preLoaderRoute: typeof CheckoutSucessoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout/pendente': {
+      id: '/checkout/pendente'
+      path: '/checkout/pendente'
+      fullPath: '/checkout/pendente'
+      preLoaderRoute: typeof CheckoutPendenteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout/erro': {
+      id: '/checkout/erro'
+      path: '/checkout/erro'
+      fullPath: '/checkout/erro'
+      preLoaderRoute: typeof CheckoutErroRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/mp-webhook': {
@@ -70,6 +237,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CarrinhoRoute: CarrinhoRoute,
+  CatalogoRoute: CatalogoRoute,
+  ContaRoute: ContaRoute,
+  LoginRoute: LoginRoute,
+  CheckoutErroRoute: CheckoutErroRoute,
+  CheckoutPendenteRoute: CheckoutPendenteRoute,
+  CheckoutSucessoRoute: CheckoutSucessoRoute,
+  FotoIdRoute: FotoIdRoute,
   ApiPublicMpWebhookRoute: ApiPublicMpWebhookRoute,
 }
 export const routeTree = rootRouteImport
