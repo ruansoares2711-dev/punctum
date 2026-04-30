@@ -12,7 +12,7 @@ import { Trash2, Upload } from "lucide-react";
 import { formatBRL, previewUrl } from "@/lib/format";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "Admin — Nexo" }] }),
+  head: () => ({ meta: [{ title: "Admin — Punctum" }] }),
   component: Admin,
 });
 
@@ -51,7 +51,7 @@ async function buildWatermarkedPreview(file: File): Promise<Blob> {
   ctx.font = `bold ${Math.round(w / 22)}px sans-serif`;
   ctx.translate(w / 2, h / 2);
   ctx.rotate(-Math.PI / 8);
-  const text = "NEXO · PREVIEW";
+  const text = "PUNCTUM · PREVIEW";
   const step = Math.round(w / 4);
   for (let y = -h; y < h; y += step) {
     for (let x = -w; x < w; x += step * 1.2) {

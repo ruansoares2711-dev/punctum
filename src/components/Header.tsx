@@ -33,8 +33,8 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="group flex items-center gap-2.5 font-display text-xl font-semibold tracking-tight">
-          <span className="nexo-dot inline-block h-2.5 w-2.5 rounded-full transition-transform group-hover:scale-125" aria-hidden />
-          <span>nexo<span className="text-primary">.</span></span>
+          <span className="punctum-dot inline-block h-2.5 w-2.5 rounded-full transition-transform group-hover:scale-125" aria-hidden />
+          <span>punctum<span className="text-primary">.</span></span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">

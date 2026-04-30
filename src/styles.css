@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Nexo — fonts */
+/* Punctum — fonts */
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap");
 
 @theme inline {
@@ -39,8 +39,8 @@
 }
 
 /* ===========================
-   Nexo — tema dark-first
-   Paleta: grafite + ciano elétrico (símbolo de "nexo"/conexão)
+   Punctum — tema dark-first
+   Paleta: grafite + ciano elétrico (símbolo de "punctum"/conexão)
    =========================== */
 :root {
   --radius: 0.625rem;
@@ -55,7 +55,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.16 0.02 240);
 
-  /* Ciano elétrico — o "nexo" */
+  /* Ciano elétrico — o "punctum" */
   --primary: oklch(0.62 0.16 215);
   --primary-foreground: oklch(0.99 0.005 230);
   --primary-glow: oklch(0.78 0.14 200);
@@ -86,7 +86,7 @@
 }
 
 .dark {
-  /* Grafite profundo — tema padrão da Nexo */
+  /* Grafite profundo — tema padrão da Punctum */
   --background: oklch(0.14 0.012 240);
   --foreground: oklch(0.97 0.005 230);
 
@@ -159,8 +159,8 @@
   .text-balance {
     text-wrap: balance;
   }
-  /* Marca Nexo — ponto de conexão luminoso */
-  .nexo-dot {
+  /* Marca Punctum — ponto de conexão luminoso */
+  .punctum-dot {
     background: radial-gradient(circle at 30% 30%, var(--primary-glow), var(--primary) 60%, transparent 70%);
     box-shadow: 0 0 12px color-mix(in oklab, var(--primary) 60%, transparent);
   }
