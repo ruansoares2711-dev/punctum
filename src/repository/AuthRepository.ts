@@ -24,9 +24,7 @@ export const AuthRepository = {
     return supabase.auth.getSession();
   },
 
-  onAuthStateChange(cb: Parameters<typeof supabase.auth.onAuthStateChange>[0]) {
-    return supabase.auth.onAuthStateChange(cb);
-  },
+  onAuthStateChange: supabase.auth.onAuthStateChange.bind(supabase.auth),
 
   async isAdmin(userId: string): Promise<boolean> {
     const { data } = await supabase
