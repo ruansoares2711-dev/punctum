@@ -10,7 +10,7 @@ import { getDownloadUrl } from "@/server/payments.functions";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/conta")({
-  head: () => ({ meta: [{ title: "Minha conta — Nexo" }] }),
+  head: () => ({ meta: [{ title: "Minha conta — Punctum" }] }),
   component: Account,
 });
 

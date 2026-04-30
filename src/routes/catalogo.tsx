@@ -9,7 +9,7 @@ import { Search } from "lucide-react";
 export const Route = createFileRoute("/catalogo")({
   head: () => ({
     meta: [
-      { title: "Catálogo — Nexo" },
+      { title: "Catálogo — Punctum" },
       { name: "description", content: "Navegue pelo catálogo completo de fotos digitais com curadoria." },
     ],
   }),
