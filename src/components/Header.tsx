@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ShoppingBag, User, LogOut, Shield } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { CartService } from "@/service/CartService";
 
 export function Header() {
   const { user, isAdmin, signOut } = useAuth();
@@ -15,12 +16,7 @@ export function Header() {
       setCartCount(0);
       return;
     }
-    const load = () =>
-      supabase
-        .from("cart_items")
-        .select("id", { count: "exact", head: true })
-        .eq("user_id", user.id)
-        .then(({ count }) => setCartCount(count ?? 0));
+    const load = () => CartService.count(user.id).then(setCartCount).catch(() => {});
     load();
     const ch = supabase
       .channel("cart-count")
