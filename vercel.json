@@ -2,7 +2,7 @@
   "buildCommand": "bun run build",
   "outputDirectory": "dist",
   "installCommand": "bun install",
-  "framework": "other",
+  "framework": "tanstack-start",
   "rewrites": [
     {
       "source": "/(.*)",
