@@ -1,12 +1,12 @@
 {
   "buildCommand": "bun run build",
-  "outputDirectory": "dist/server",
+  "outputDirectory": "dist",
   "installCommand": "bun install",
   "framework": "other",
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.js"
+      "destination": "/server/index.js"
     }
   ]
 }
