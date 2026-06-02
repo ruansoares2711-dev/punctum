@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { formatBRL } from "@/lib/format";
 import { Download, ShoppingBag } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
+import { getDownloadUrl } from "@/payments.functions";
+import { serverFnAuthHeaders } from "@/lib/server-fn-auth";
 import { CheckoutService } from "@/service/CheckoutService";
 import { toast } from "sonner";
 import { env } from "@/config/env";
@@ -14,7 +16,7 @@ export function AccountController() {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
-  const downloadFn = useServerFn(CheckoutService.serverGetDownloadUrl);
+  const downloadFn = useServerFn(getDownloadUrl);
 
   useEffect(() => {
     if (!loading && !user) navigate({ to: "/login" });
@@ -27,7 +29,8 @@ export function AccountController() {
 
   const download = async (photoId: string) => {
     try {
-      const { url } = await downloadFn({ data: { photoId } });
+      const headers = await serverFnAuthHeaders();
+      const { url } = await downloadFn({ data: { photoId }, headers });
       window.location.href = url;
     } catch (e: any) {
       toast.error(e.message);

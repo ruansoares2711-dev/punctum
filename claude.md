@@ -40,6 +40,9 @@
 ```
 VITE_SUPABASE_URL=https://msuffpijwfqzgfeqcszp.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=sua_chave_anonima_aqui
+SUPABASE_URL=https://msuffpijwfqzgfeqcszp.supabase.co
+SUPABASE_PUBLISHABLE_KEY=sua_chave_anonima_aqui
+SUPABASE_SERVICE_ROLE_KEY=sua_service_role_aqui
 MERCADO_PAGO_ACCESS_TOKEN=sua_chave_privada_aqui
 ```
 
@@ -92,7 +95,7 @@ Verificar URL e publishable key em `.env.local`
 
 ### Variáveis de Ambiente
 - **Public** (`VITE_*`): Expostas ao cliente
-- **Secret**: Server-side only (SUPABASE_SERVICE_ROLE_KEY, MERCADO_PAGO_*)
+- **Secret**: Server-side only (`SUPABASE_SERVICE_ROLE_KEY`, `MERCADO_PAGO_*`). Server functions também aceitam `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` como fallback.
 
 ### Row-Level Security (RLS)
 - Client usa `supabase` (com auth)

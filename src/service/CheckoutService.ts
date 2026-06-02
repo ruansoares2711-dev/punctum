@@ -1,10 +1,7 @@
-import { createCheckout, getDownloadUrl } from "@/server/payments.functions";
 import { PurchaseRepository } from "@/repository/PurchaseRepository";
 
-/** Wrappers do lado client para as server functions de pagamento. */
+/** Operações de checkout no client (Supabase). Server functions: importar em @/payments.functions */
 export const CheckoutService = {
-  serverCreateCheckout: createCheckout,
-  serverGetDownloadUrl: getDownloadUrl,
   getPurchaseStatus: (id: string) => PurchaseRepository.getStatus(id),
   listPurchases: (userId: string) => PurchaseRepository.listForUser(userId),
   userOwnsPhoto: (userId: string, photoId: string) =>

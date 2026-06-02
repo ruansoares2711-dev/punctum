@@ -7,6 +7,8 @@ import { formatBRL, previewUrl } from "@/lib/format";
 import { ShoppingBag, Check, Download } from "lucide-react";
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
+import { getDownloadUrl } from "@/payments.functions";
+import { serverFnAuthHeaders } from "@/lib/server-fn-auth";
 import { CheckoutService } from "@/service/CheckoutService";
 import { CartService } from "@/service/CartService";
 import { CatalogService } from "@/service/CatalogService";
@@ -25,7 +27,7 @@ export function PhotoDetailController({ id }: Props) {
   const [inCart, setInCart] = useState(false);
   const [owned, setOwned] = useState(false);
   const [loading, setLoading] = useState(true);
-  const downloadFn = useServerFn(CheckoutService.serverGetDownloadUrl);
+  const downloadFn = useServerFn(getDownloadUrl);
 
   useEffect(() => {
     setLoading(true);
@@ -63,7 +65,8 @@ export function PhotoDetailController({ id }: Props) {
 
   const handleDownload = async () => {
     try {
-      const { url } = await downloadFn({ data: { photoId: id } });
+      const headers = await serverFnAuthHeaders();
+      const { url } = await downloadFn({ data: { photoId: id }, headers });
       window.location.href = url;
     } catch (e: any) {
       toast.error(e.message);
