@@ -1,15 +1,19 @@
 {
+  "installCommand": "bun install",
+  "buildCommand": "bun run build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "devCommand": "bun run dev",
-  "buildCommand": "bun run build",
-  "installCommand": "bun install",
   "functions": {
-    "api/**/*.ts": {
-      "runtime": "edge"
-    },
-    "src/router.tsx": {
-      "runtime": "nodejs18.x"
+    "dist/server/index.js": {
+      "runtime": "nodejs18.x",
+      "memory": 1024,
+      "maxDuration": 10
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/dist/server/index.js"
+    }
+  ]
 }
