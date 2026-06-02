@@ -3,6 +3,7 @@
   "outputDirectory": "dist",
   "installCommand": "bun install",
   "framework": "tanstack-start",
+  "nodeVersion": "20.x",
   "rewrites": [
     {
       "source": "/(.*)",
