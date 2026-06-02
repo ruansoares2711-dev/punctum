@@ -3,10 +3,10 @@
   "outputDirectory": "dist/server",
   "installCommand": "bun install",
   "framework": "tanstack-start",
-  "middleware": [
+  "rewrites": [
     {
-      "src": "^/(.*)",
-      "dest": "/index.js"
+      "source": "/(.*)",
+      "destination": "/index.js"
     }
   ]
 }
