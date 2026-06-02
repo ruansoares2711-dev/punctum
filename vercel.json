@@ -1,12 +1,12 @@
 {
   "buildCommand": "bun run build",
-  "outputDirectory": "dist",
+  "outputDirectory": "dist/server",
   "installCommand": "bun install",
   "framework": "tanstack-start",
-  "rewrites": [
+  "middleware": [
     {
-      "source": "/(.*)",
-      "destination": "/server/index.js"
+      "src": "^/(.*)",
+      "dest": "/index.js"
     }
   ]
 }
