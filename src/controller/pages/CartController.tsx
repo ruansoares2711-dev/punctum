@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { formatBRL, previewUrl } from "@/lib/format";
 import { Trash2, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
 import { createCheckout } from "@/payments.functions";
+import { serverFnAuthHeaders } from "@/lib/server-fn-auth";
 import { CartService } from "@/service/CartService";
 import { env } from "@/config/env";
 import type { CartItem } from "@/model/Cart";
@@ -15,6 +17,7 @@ export function CartController() {
   const navigate = useNavigate();
   const [items, setItems] = useState<CartItem[]>([]);
   const [paying, setPaying] = useState(false);
+  const checkoutFn = useServerFn(createCheckout);
 
   useEffect(() => {
     if (!loading && !user) navigate({ to: "/login" });
@@ -39,9 +42,8 @@ export function CartController() {
   const checkout = async () => {
     setPaying(true);
     try {
-      const result = await createCheckout({
-        origin: window.location.origin,
-      });
+      const headers = await serverFnAuthHeaders();
+      const result = await checkoutFn({ origin: window.location.origin }, { headers });
       const initPoint = result?.initPoint;
       if (!initPoint || typeof initPoint !== "string") {
         throw new Error("Link de pagamento não recebido. Tente novamente.");
