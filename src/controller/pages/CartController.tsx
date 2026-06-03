@@ -25,7 +25,9 @@ export function CartController() {
 
   const load = () => {
     if (!user) return;
-    CartService.list(user.id).then(setItems).catch(() => {});
+    CartService.list(user.id)
+      .then(setItems)
+      .catch(() => {});
   };
 
   useEffect(load, [user]);
@@ -41,10 +43,7 @@ export function CartController() {
     setPaying(true);
     try {
       const headers = await serverFnAuthHeaders();
-      const result = await checkoutFn({
-        data: { origin: window.location.origin },
-        headers,
-      });
+      const result = await checkoutFn({ origin: window.location.origin }, { headers });
       const initPoint = result?.initPoint;
       if (!initPoint || typeof initPoint !== "string") {
         throw new Error("Link de pagamento não recebido. Tente novamente.");
@@ -71,23 +70,38 @@ export function CartController() {
         <div className="rounded-xl border border-dashed border-border bg-card/40 p-12 text-center text-muted-foreground">
           <ShoppingBag className="mx-auto mb-3 h-8 w-8" />
           Seu carrinho está vazio.{" "}
-          <Link to="/catalogo" className="text-primary hover:underline">Explorar catálogo</Link>
+          <Link to="/catalogo" className="text-primary hover:underline">
+            Explorar catálogo
+          </Link>
         </div>
       ) : (
         <div className="grid gap-8 lg:grid-cols-[1fr_360px]">
           <div className="space-y-3">
             {items.map((item) => (
-              <div key={item.id} className="flex items-center gap-4 rounded-xl border border-border bg-card p-3">
+              <div
+                key={item.id}
+                className="flex items-center gap-4 rounded-xl border border-border bg-card p-3"
+              >
                 <div className="h-20 w-28 shrink-0 overflow-hidden rounded-lg bg-muted">
                   {item.photo?.preview_path && (
-                    <img src={previewUrl(env.supabaseUrl, item.photo.preview_path)} alt="" className="h-full w-full object-cover" />
+                    <img
+                      src={previewUrl(env.supabaseUrl, item.photo.preview_path)}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
                   )}
                 </div>
                 <div className="flex-1">
-                  <Link to="/foto/$id" params={{ id: item.photo.id }} className="font-medium hover:underline">
+                  <Link
+                    to="/foto/$id"
+                    params={{ id: item.photo.id }}
+                    className="font-medium hover:underline"
+                  >
                     {item.photo?.title}
                   </Link>
-                  <div className="text-sm text-muted-foreground">{formatBRL(item.photo?.price_cents ?? 0)}</div>
+                  <div className="text-sm text-muted-foreground">
+                    {formatBRL(item.photo?.price_cents ?? 0)}
+                  </div>
                 </div>
                 <Button variant="ghost" size="icon" onClick={() => remove(item.id)}>
                   <Trash2 className="h-4 w-4" />
@@ -99,7 +113,9 @@ export function CartController() {
           <div className="h-fit rounded-xl border border-border bg-card p-6">
             <h2 className="mb-4 font-display text-xl font-semibold">Resumo</h2>
             <div className="flex items-center justify-between border-b border-border pb-4 text-sm">
-              <span className="text-muted-foreground">{items.length} {items.length === 1 ? "item" : "itens"}</span>
+              <span className="text-muted-foreground">
+                {items.length} {items.length === 1 ? "item" : "itens"}
+              </span>
               <span>{formatBRL(total)}</span>
             </div>
             <div className="flex items-center justify-between pt-4 text-lg font-semibold">
