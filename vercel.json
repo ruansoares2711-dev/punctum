@@ -1,16 +1,25 @@
 {
   "buildCommand": "bun run build",
-  "outputDirectory": "dist/server",
+  "outputDirectory": "dist/client",
   "installCommand": "bun install",
   "framework": "tanstack-start",
-  "rewrites": [
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 60,
+      "memory": 1024
+    }
+  },
+  "routes": [
     {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
+      "src": "^/static/(.*)",
+      "dest": "/dist/client/assets/$1",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
     },
     {
-      "source": "/:path*",
-      "destination": "/index.js"
+      "src": "^/(.*)",
+      "dest": "/api/index.js"
     }
   ]
 }
