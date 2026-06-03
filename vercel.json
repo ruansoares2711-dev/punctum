@@ -2,21 +2,5 @@
   "buildCommand": "bun run build",
   "outputDirectory": "dist/client",
   "installCommand": "bun install",
-  "framework": "tanstack-start",
-  "functions": {
-    "dist/server/index.js": {
-      "maxDuration": 60,
-      "memory": 1024
-    }
-  },
-  "routes": [
-    {
-      "src": "^/api/(.*)$",
-      "dest": "/dist/server/index.js"
-    },
-    {
-      "src": "^/(?!.*\\.).*$",
-      "dest": "/dist/server/index.js"
-    }
-  ]
+  "framework": "tanstack-start"
 }
