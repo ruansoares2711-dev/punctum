@@ -7,6 +7,7 @@ import { Trash2, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
 import { createCheckout } from "@/payments.functions";
 import { CartService } from "@/service/CartService";
+import { env } from "@/config/env";
 import type { CartItem } from "@/model/Cart";
 
 export function CartController() {
