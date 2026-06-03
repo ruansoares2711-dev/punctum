@@ -46,7 +46,10 @@ function resolveMercadoPagoCheckoutUrl(pref: MpPreference, token: string): strin
 }
 
 function mercadoPagoErrorMessage(pref: MpPreference, status: number): string {
-  const cause = pref.cause?.map((c) => c.description).filter(Boolean).join("; ");
+  const cause = pref.cause
+    ?.map((c) => c.description)
+    .filter(Boolean)
+    .join("; ");
   const detail = pref.message || pref.error || cause;
   return detail ? `Mercado Pago (${status}): ${detail}` : `Mercado Pago falhou: ${status}`;
 }
@@ -71,8 +74,14 @@ export const createCheckout = createServerFn({ method: "POST" })
     if (!items || items.length === 0) throw new Error("Carrinho vazio");
 
     const photos = items
-      .map((i: { photo: { id: string; title: string; price_cents: number; preview_path: string } | null }) => i.photo)
-      .filter((p): p is { id: string; title: string; price_cents: number; preview_path: string } => !!p);
+      .map(
+        (i: {
+          photo: { id: string; title: string; price_cents: number; preview_path: string } | null;
+        }) => i.photo,
+      )
+      .filter(
+        (p): p is { id: string; title: string; price_cents: number; preview_path: string } => !!p,
+      );
     if (photos.length === 0) throw new Error("Não foi possível carregar os itens do carrinho");
     if (photos.some((p) => !p.price_cents || p.price_cents <= 0)) {
       throw new Error("Existem itens com preço inválido no carrinho");
@@ -136,7 +145,14 @@ export const createCheckout = createServerFn({ method: "POST" })
       body: JSON.stringify(prefBody),
     });
 
-    const pref = (await res.json()) as MpPreference;
+    let pref: MpPreference;
+    try {
+      const text = await res.text();
+      pref = JSON.parse(text);
+    } catch (parseError) {
+      console.error("Erro ao parsear resposta do MP:", res.status, parseError);
+      throw new Error("Falha ao processar resposta do Mercado Pago");
+    }
     if (!res.ok) {
       console.error("MP error", res.status, pref);
       throw new Error(mercadoPagoErrorMessage(pref, res.status));
@@ -148,14 +164,12 @@ export const createCheckout = createServerFn({ method: "POST" })
       throw new Error("Mercado Pago não retornou identificador da preferência");
     }
 
-    await supabase
-      .from("purchases")
-      .update({ mp_preference_id: pref.id })
-      .eq("id", purchase.id);
+    await supabase.from("purchases").update({ mp_preference_id: pref.id }).eq("id", purchase.id);
 
+    // Garantir que o retorno é totalmente serializável
     return {
-      purchaseId: purchase.id,
-      initPoint,
+      purchaseId: String(purchase.id),
+      initPoint: String(initPoint),
     };
   });
 
