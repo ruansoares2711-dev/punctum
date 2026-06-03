@@ -1,11 +1,16 @@
 {
   "buildCommand": "bun run build",
-  "outputDirectory": "dist/client",
+  "outputDirectory": "dist/server",
   "installCommand": "bun install",
   "framework": "tanstack-start",
-  "functions": {
-    "api/**": {
-      "maxDuration": 60
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/index.js"
     }
-  }
+  ]
 }
