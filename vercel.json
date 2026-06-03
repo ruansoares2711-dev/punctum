@@ -2,5 +2,10 @@
   "buildCommand": "bun run build",
   "outputDirectory": "dist/client",
   "installCommand": "bun install",
-  "framework": "tanstack-start"
+  "framework": "tanstack-start",
+  "functions": {
+    "api/**": {
+      "maxDuration": 60
+    }
+  }
 }
